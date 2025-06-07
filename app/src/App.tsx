@@ -6,6 +6,7 @@ import { Volume } from './components/ui/volum';
 import './index.css'
 import { playSound } from './lib/utils';
 import { evaluate } from 'mathjs';
+import numWords from 'num-words';
 
 function Head({ display } : { display: string }) {
   return(
@@ -299,8 +300,22 @@ function App() {
   }
 
   function equalClicked() {
-    setDisplay(evaluate(display));
-    setFromEqual(true);
+    try {
+      const result = evaluate(display);
+      setDisplay(result.toString());
+      setFromEqual(true);
+
+      const word = numWords(Number(result)); 
+      const utterance = new SpeechSynthesisUtterance(word);
+      utterance.lang = 'en-US';
+
+      setTimeout(() => {
+        speechSynthesis.speak(utterance);
+      }, 1000);
+    } catch (error) {
+      console.error('Invalid expression:', error);
+      setDisplay('Error');
+    }
   }
 
   return (
