@@ -7,6 +7,7 @@ import './index.css'
 import { playSound } from './lib/utils';
 import { evaluate } from 'mathjs';
 import numWords from 'num-words';
+import { Dot } from 'lucide-react';
 
 function Head({ display } : { display: string }) {
   return(
@@ -40,7 +41,7 @@ function Head({ display } : { display: string }) {
         />
       </div>
 
-      <div className='w-[30%]'>
+      <div className='relative w-[30%]'>
         <div 
           className='text-wrap text-2xl font-bold'
           style={{
@@ -48,6 +49,9 @@ function Head({ display } : { display: string }) {
           }}
         >
           Talking Calculator
+        </div>
+        <div className='absolute top-0 right-0 text-xs'>
+          U+280X
         </div>
       </div>
     </section>
@@ -69,7 +73,7 @@ function ButtonOps({ isPlaying, on, setOn } : ButtonOpsProps) {
         <SwitchOnOff on={ on } setOn={ setOn } />
       </div>
 
-      <div className='w-[35%]'>
+      <div className='w-[35%] flex justify-center'>
         <Volume />
       </div>
 
@@ -103,7 +107,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("seven", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("7") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>7</button>
+            <button onClick={ () => { playSound("seven", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("7") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              7
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -111,7 +125,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("four", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("4") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>4</button>
+            <button onClick={ () => { playSound("four", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("4") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              4
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -119,71 +143,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("one", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("1") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>1</button>
-          </div>
-
-        </div>
-
-        <div className='flex flex-col gap-2'>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("eight", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("8") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>8</button>
-          </div>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("five", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("5") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>5</button>
-          </div>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("two", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("2") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>2</button>
-          </div>
-
-        </div>
-
-        <div className='flex flex-col gap-2'>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("nine", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("9") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>9</button>
-          </div>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("six", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("6") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>6</button>
-          </div>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("three", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("3") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>3</button>
-          </div>
-
-          <div 
-            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
-            style={{ 
-              boxShadow: '3px 3px lightgray',
-            }}>
-            <button onClick={ () => { playSound("decimal", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked(".") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>.</button>
+            <button onClick={ () => { playSound("one", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("1") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              1
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
         </div>
@@ -195,7 +165,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("multiply", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("*") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>X</button>
+            <button onClick={ () => { playSound("eight", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("8") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              8
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -203,7 +183,161 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("minus", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("-") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>-</button>
+            <button onClick={ () => { playSound("five", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("5") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              5
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("two", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("2") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              2
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+        </div>
+
+        <div className='flex flex-col gap-2'>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("nine", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("9") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              9
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("six", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("6") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              6
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("three", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("3") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              3
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("decimal", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked(".") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              .
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+        </div>
+
+        <div className='flex flex-col gap-2'>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("multiply", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("*") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              X
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+              </div>
+            </button>
+          </div>
+
+          <div 
+            className='w-20 h-20 border-1 border-gray-200 rounded-full' 
+            style={{ 
+              boxShadow: '3px 3px lightgray',
+            }}>
+            <button onClick={ () => { playSound("minus", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("-") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              -
+              <div className='absolute flex'>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 mr-[-2px]'/>
+                  <Dot className='text-red-500 ml-[-2px]'/>
+                </div>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -211,7 +345,27 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("plus", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("+") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>+</button>
+            <button onClick={ () => { playSound("plus", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("+") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              +
+              <div className='absolute flex'>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+              </div>
+            </button>
           </div>
 
         </div>
@@ -223,7 +377,27 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("divide", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("/") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>/</button>
+            <button onClick={ () => { playSound("divide", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("/") } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              /
+              <div className='absolute flex'>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-red-500 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -231,7 +405,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("clear", on, () => setIsPlaying(true), () => setIsPlaying(false)); clearClicked() } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>C</button>
+            <button onClick={ () => { playSound("clear", on, () => setIsPlaying(true), () => setIsPlaying(false)); clearClicked() } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              C
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+                <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -239,7 +423,17 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("delete", on, () => setIsPlaying(true), () => setIsPlaying(false)); deleteClicked() } } className='w-full h-full !rounded-full flex justify-center items-center !text-xl !font-bold !bg-white'>DEL</button>
+            <button onClick={ () => { playSound("delete", on, () => setIsPlaying(true), () => setIsPlaying(false)); deleteClicked() } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-xl !font-bold !bg-white'>
+              DEL
+              <div className='absolute grid grid-cols-2 gap-0'>
+                <Dot className='text-red-500 mr-[-2px]'/>
+                <Dot className='text-red-500 ml-[-2px]'/>
+                <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                <Dot className='text-gray-300 mr-[-2px]'/>
+                <Dot className='text-gray-300 ml-[-2px]'/>
+              </div>
+            </button>
           </div>
 
           <div 
@@ -247,7 +441,27 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("equal", on, () => setIsPlaying(true), () => setIsPlaying(false)); equalClicked() } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>=</button>
+            <button onClick={ () => { playSound("equal", on, () => setIsPlaying(true), () => setIsPlaying(false)); equalClicked() } } className='relative w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>
+              =
+              <div className='absolute flex'>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-gray-300 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                </div>
+                <div className='grid grid-cols-2 gap-0'>
+                  <Dot className='text-gray-300 mr-[-2px]'/>
+                  <Dot className='text-gray-300 ml-[-2px]'/>
+                  <Dot className='text-red-500 mr-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 ml-[-2px] mt-[-10px] mb-[-10px]'/>
+                  <Dot className='text-red-500 mr-[-2px]'/>
+                  <Dot className='text-red-500 ml-[-2px]'/>
+                </div>
+              </div>
+            </button>
           </div>
 
         </div>
