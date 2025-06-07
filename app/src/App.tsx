@@ -130,7 +130,7 @@ function Buttons({ on, setIsPlaying, charClicked, deleteClicked, clearClicked, e
             style={{ 
               boxShadow: '3px 3px lightgray',
             }}>
-            <button onClick={ () => { playSound("eight", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("6") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>8</button>
+            <button onClick={ () => { playSound("eight", on, () => setIsPlaying(true), () => setIsPlaying(false)); charClicked("8") } } className='w-full h-full !rounded-full flex justify-center items-center !text-3xl !font-bold !bg-white'>8</button>
           </div>
 
           <div 
