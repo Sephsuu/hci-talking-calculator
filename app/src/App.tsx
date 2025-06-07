@@ -65,7 +65,7 @@ function ButtonOps({ isPlaying, on, setOn } : ButtonOpsProps) {
     <section className='flex items-center w-full gap-2 mt-2'>
 
       <div className='w-[20%]'>
-        <div className='text-sm w-full text-center font-semibold'>On/Off</div>
+        <div className='text-sm w-full text-center font-semibold'>Off/On</div>
         <SwitchOnOff on={ on } setOn={ setOn } />
       </div>
 
